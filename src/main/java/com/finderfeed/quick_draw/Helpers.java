@@ -6,6 +6,9 @@ import org.lwjgl.glfw.GLFW;
 
 public class Helpers {
 
+    public static final int MIN_SLOT = 0;
+    public static final int MAX_SLOT = 35;
+
 
     public static boolean shiftAndControlPressed(){
         long window = Minecraft.getInstance().getWindow().getWindow();
