@@ -1,12 +1,10 @@
 package com.finderfeed.quick_draw.mixins;
 
 
-import com.finderfeed.quick_draw.MixinCode;
+import com.finderfeed.quick_draw.misc.MixinCode;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.CreativeModeTab;
 import org.spongepowered.asm.mixin.Mixin;

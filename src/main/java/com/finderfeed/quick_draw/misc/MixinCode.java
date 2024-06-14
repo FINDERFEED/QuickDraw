@@ -1,5 +1,7 @@
-package com.finderfeed.quick_draw;
+package com.finderfeed.quick_draw.misc;
 
+import com.finderfeed.quick_draw.QuickDraw;
+import com.finderfeed.quick_draw.QuickDrawConfig;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
@@ -15,10 +17,10 @@ public class MixinCode {
         if (slot != null){
             int slotid = slot.getSlotIndex();
             System.out.println(slotid);
-            if (Helpers.shiftAndControlPressed()){
-                if (slotid >= 0 && slotid <= 35){
+            if (ClientHelpers.shiftAndControlPressed()){
+                if (slotid >= Constants.MIN_SLOT && slotid <= Constants.MAX_SLOT){
                     List<Integer> slots = QuickDrawConfig.SLOTS.get();
-                    if (!Helpers.isKeyPressed(GLFW.GLFW_KEY_LEFT_ALT)){
+                    if (!ClientHelpers.isKeyPressed(GLFW.GLFW_KEY_LEFT_ALT)){
                         if (!slots.contains(slotid)) {
                             slots.add(slotid);
                             QuickDrawConfig.SLOTS.save();
@@ -43,7 +45,7 @@ public class MixinCode {
 
     public static boolean renderFastAccessSlots(GuiGraphics graphics, Slot slot){
         if (!(slot.container instanceof Inventory)) return false;
-        if (!QuickDrawConfig.RENDER_QUICK_DRAW_SLOT.get() && !Helpers.shiftAndControlPressed()) return false;
+        if (!QuickDrawConfig.RENDER_QUICK_DRAW_SLOT.get() && !ClientHelpers.shiftAndControlPressed()) return false;
         int id = slot.getSlotIndex();
         if (QuickDrawConfig.SLOTS.get().contains(id)){
             int color = Integer.decode(QuickDrawConfig.QUICK_DRAW_SLOT_COLOR.get());

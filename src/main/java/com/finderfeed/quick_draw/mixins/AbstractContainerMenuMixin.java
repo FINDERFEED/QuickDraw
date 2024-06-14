@@ -1,6 +1,6 @@
 package com.finderfeed.quick_draw.mixins;
 
-import com.finderfeed.quick_draw.MixinCode;
+import com.finderfeed.quick_draw.misc.MixinCode;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;

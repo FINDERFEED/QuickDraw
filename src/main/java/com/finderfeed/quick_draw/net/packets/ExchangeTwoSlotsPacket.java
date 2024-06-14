@@ -1,6 +1,6 @@
 package com.finderfeed.quick_draw.net.packets;
 
-import com.finderfeed.quick_draw.Helpers;
+import com.finderfeed.quick_draw.misc.Constants;
 import com.finderfeed.quick_draw.QuickDraw;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -28,7 +28,7 @@ public record ExchangeTwoSlotsPacket(int slot1,int slot2) implements CustomPacke
             Player player = context.player();
             int slot1 = payload.slot1;
             int slot2 = payload.slot2;
-            if (slot1 >= Helpers.MIN_SLOT && slot1 <= Helpers.MAX_SLOT && slot2 >= Helpers.MIN_SLOT && slot2 <= Helpers.MAX_SLOT && slot2 != slot1){
+            if (slot1 >= Constants.MIN_SLOT && slot1 <= Constants.MAX_SLOT && slot2 >= Constants.MIN_SLOT && slot2 <= Constants.MAX_SLOT && slot2 != slot1){
                 Inventory inventory = player.getInventory();
                 ItemStack item1 = inventory.getItem(slot1);
                 ItemStack item2 = inventory.getItem(slot2);
