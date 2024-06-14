@@ -2,6 +2,7 @@ package com.finderfeed.quick_draw.misc;
 
 import com.finderfeed.quick_draw.QuickDraw;
 import com.finderfeed.quick_draw.QuickDrawConfig;
+import com.finderfeed.quick_draw.init.QDClientInit;
 import com.finderfeed.quick_draw.net.packets.ExchangeTwoSlotsPacket;
 import com.finderfeed.quick_draw.renderables.QuickDrawOverlay;
 import com.finderfeed.quick_draw.renderables.RadialMenu;
@@ -22,7 +23,6 @@ import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HexFormat;
 import java.util.List;
 
 @EventBusSubscriber(modid = QuickDraw.MODID,bus = EventBusSubscriber.Bus.GAME,value = Dist.CLIENT)
@@ -40,7 +40,7 @@ public class QDClientEvents {
 
     @SubscribeEvent
     public static void keyPressed(InputEvent.Key event){
-        if (event.getKey() == GLFW.GLFW_KEY_TAB && Minecraft.getInstance().screen == null){
+        if (event.getKey() == QDClientInit.OPEN_QUICK_DRAW_MENU_KEY.getKey().getValue() && Minecraft.getInstance().screen == null){
             List<Integer> slots = QuickDrawConfig.SLOTS.get();
             if (!slots.isEmpty()) {
                 if (event.getAction() == GLFW.GLFW_PRESS) {
@@ -66,10 +66,12 @@ public class QDClientEvents {
     private static RadialMenu generateMenu(List<Integer> slots){
         List<Integer> ints = new ArrayList<>(slots);
         ints.sort(Comparator.comparingInt(i->i));
+        float[] unselected = ClientHelpers.hexRGBToRGBA(Integer.decode(QuickDrawConfig.QUICK_DRAW_MENU_UNSELECTED.get()),0.8f);
+        float[] selected = ClientHelpers.hexRGBToRGBA(Integer.decode(QuickDrawConfig.QUICK_DRAW_MENU_SELECTED.get()),0.8f);
         RadialMenu.RadialMenuShaderSettings settings =
                 new RadialMenu.RadialMenuShaderSettings(0,0.5f,0.1f,
-                        new float[]{0.6f,0.6f,0.6f,0.8f},
-                        new float[]{0.9f,0.9f,0.9f,0.8f},
+                        unselected,
+                        selected,
                         0.05f
                 );
         List<RadialMenu.RadialMenuSection> sections = new ArrayList<>();

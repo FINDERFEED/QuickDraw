@@ -16,7 +16,6 @@ public class MixinCode {
     public static boolean slotClicked(Slot slot, int shit,int idk1, ClickType type,boolean isCreativeInventory){
         if (slot != null){
             int slotid = slot.getSlotIndex();
-            System.out.println(slotid);
             if (ClientHelpers.shiftAndControlPressed()){
                 if (slotid >= Constants.MIN_SLOT && slotid <= Constants.MAX_SLOT){
                     List<Integer> slots = QuickDrawConfig.SLOTS.get();

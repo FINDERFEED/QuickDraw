@@ -9,6 +9,14 @@ public class ClientHelpers {
 
 
 
+    public static float[] hexRGBToRGBA(int hex,float alpha){
+        float r = (hex & 0xff0000) >> 16;
+        float g = (hex & 0x00ff00) >> 8;
+        float b = (hex & 0x0000ff);
+        return new float[]{
+                r/255f,g/255f,b/255f,alpha
+        };
+    }
 
     public static boolean shiftAndControlPressed(){
         long window = Minecraft.getInstance().getWindow().getWindow();

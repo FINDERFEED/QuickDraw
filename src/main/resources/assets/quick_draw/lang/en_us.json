@@ -1,3 +1,5 @@
 {
-  "quick_draw.no_item_found": "Slot is empty"
+  "quick_draw.keys.category": "Quick Draw",
+  "quick_draw.no_item_found": "Slot is empty",
+  "quick_draw.keys.open_menu": "Open quick draw menu"
 }
