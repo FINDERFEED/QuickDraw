@@ -28,7 +28,7 @@ public class QuickDrawConfig {
         QUICK_DRAW_MENU_SELECTED = BUILDER.comment("Color in hex format (RGB) when hovered over a section in quick draw menu")
                 .define("selected_section_color","0xaaaaaa");
 
-        QUICK_DRAW_MENU_UNSELECTED = BUILDER.comment("Color in hex format (RGB) when of an unselected section in quick draw menu")
+        QUICK_DRAW_MENU_UNSELECTED = BUILDER.comment("Color in hex format (RGB) of an unselected section in quick draw menu")
                 .define("unselected_section_color","0xeeeeee");
 
         RENDER_QUICK_DRAW_SLOT = BUILDER.comment("If true - always renders which slot is a fast access one, if false - renders only when ctrl+shift is pressed")
