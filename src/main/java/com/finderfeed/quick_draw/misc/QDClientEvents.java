@@ -24,6 +24,7 @@ import org.lwjgl.glfw.GLFW;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @EventBusSubscriber(modid = QuickDraw.MODID,bus = EventBusSubscriber.Bus.GAME,value = Dist.CLIENT)
 public class QDClientEvents {
@@ -63,11 +64,21 @@ public class QDClientEvents {
         }
     }
 
+    private static float[] argbToFloatArray(List<Integer> color){
+        return new float[]{
+                color.get(1) / 255f,
+                color.get(2) / 255f,
+                color.get(3) / 255f,
+                color.get(0) / 255f
+        };
+    }
+
     private static RadialMenu generateMenu(List<Integer> slots){
         List<Integer> ints = new ArrayList<>(slots);
         ints.sort(Comparator.comparingInt(i->i));
-        float[] unselected = ClientHelpers.hexRGBToRGBA(Integer.decode(QuickDrawConfig.QUICK_DRAW_MENU_UNSELECTED.get()),0.8f);
-        float[] selected = ClientHelpers.hexRGBToRGBA(Integer.decode(QuickDrawConfig.QUICK_DRAW_MENU_SELECTED.get()),0.8f);
+        float[] unselected = argbToFloatArray(QuickDrawConfig.QUICK_DRAW_MENU_UNSELECTED.get());
+        float[] selected = argbToFloatArray(QuickDrawConfig.QUICK_DRAW_MENU_SELECTED.get());
+
         RadialMenu.RadialMenuShaderSettings settings =
                 new RadialMenu.RadialMenuShaderSettings(0,0.5f,0.1f,
                         unselected,

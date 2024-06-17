@@ -47,10 +47,9 @@ public class MixinCode {
         if (!QuickDrawConfig.RENDER_QUICK_DRAW_SLOT.get() && !ClientHelpers.shiftAndControlPressed()) return false;
         int id = slot.getSlotIndex();
         if (QuickDrawConfig.SLOTS.get().contains(id)){
-            int color = Integer.decode(QuickDrawConfig.QUICK_DRAW_SLOT_COLOR.get());
-            color += 0x66000000;
+            List<Integer> color = QuickDrawConfig.QUICK_DRAW_SLOT_COLOR.get();
             graphics.fill(
-                    slot.x,slot.y,slot.x+16,slot.y+16,color
+                    slot.x,slot.y,slot.x+16,slot.y+16,ClientHelpers.argbToHex(color)
             );
         }
         return false;

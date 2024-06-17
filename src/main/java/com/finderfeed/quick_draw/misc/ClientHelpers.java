@@ -5,6 +5,8 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.List;
+
 public class ClientHelpers {
 
 
@@ -16,6 +18,15 @@ public class ClientHelpers {
         return new float[]{
                 r/255f,g/255f,b/255f,alpha
         };
+    }
+
+    public static int argbToHex(List<Integer> argb){
+        int col = 0;
+        col += argb.get(3);
+        col += argb.get(2) << 8;
+        col += argb.get(1) << 16;
+        col += argb.get(0) << 24;
+        return col;
     }
 
     public static boolean shiftAndControlPressed(){
